@@ -1,0 +1,75 @@
+---
+title: "Quiz1-GettingStarted"
+author: "Yihao Yang"
+date: "8/20/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Q1
+The \verb| en_US.blogs.txt | en_US.blogs.txt  file is how many megabytes?
+
+200 mb for en_US.blogs.txt
+
+## Q2
+Question 2
+The \verb|en_US.twitter.txt|en_US.twitter.txt has how many lines of text?
+
+```{r}
+con <- file("final/en_US/en_US.twitter.txt")
+length(readLines(con))
+close(con)
+```
+
+## Q3
+What is the length of the longest line seen in any of the three en_US data sets?
+
+```{r}
+con <- file("final/en_US/en_US.blogs.txt")
+max(nchar(readLines(con)))
+close(con)
+con <- file("final/en_US/en_US.news.txt")
+max(nchar(readLines(con)))
+close(con)
+con <- file("final/en_US/en_US.twitter.txt")
+max(nchar(readLines(con)))
+close(con)
+```
+Over 40 thousand in the blogs data set.
+
+## Q4
+In the en_US twitter data set, if you divide the number of lines where the word "love" (all lowercase) occurs by the number of lines the word "hate" (all lowercase) occurs, about what do you get?
+
+```{r}
+require(stringr)
+con <- file("final/en_US/en_US.twitter.txt")
+sum(str_detect(readLines(con),"love"))/sum(str_detect(readLines(con),"hate"))
+close(con)
+```
+4
+
+## Q5
+The one tweet in the en_US twitter data set that matches the word "biostats" says what?
+
+```{r}
+require(stringr)
+con <- file("final/en_US/en_US.twitter.txt")
+readLines(con)[str_detect(readLines(con),"biostats")]
+close(con)
+```
+
+## Q6
+How many tweets have the exact characters "A computer once beat me at chess, but it was no match for me at kickboxing". (I.e. the line matches those characters exactly.)
+
+```{r}
+require(stringr)
+con <- file("final/en_US/en_US.twitter.txt")
+sum(str_detect(readLines(con),"A computer once beat me at chess, but it was no match for me at kickboxing"))
+close(con)
+```
+
+
+
