@@ -33,7 +33,9 @@ shinyUI(navbarPage("Next word prediction",
                                   )
                             )
                    ),
-                   tabPanel("About"
-                            ))
+                   tabPanel("About",
+                            a(href="https://github.com/YihaoYang/DataScienceCapstone","Github Repo"),br(),
+                            a(href="https://rpubs.com/yihaoy/654024","R presentation"))
+                   )
     
 )
